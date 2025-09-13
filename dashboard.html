@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Smart Farming</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Smart Farming</h1>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/login.html">Login</a>
+      <a href="/register.html">Register</a>
+      <a href="/dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+
+     <div class="card">
+      <h3>🌾 Crop Recommendation Form</h3>
+      <form id="cropForm">
+        <label>Soil pH:</label>
+        <input type="number" step="0.1" id="ph" placeholder="6.5">
+        <label>Soil Moisture (%):</label>
+        <input type="number" id="moisture" placeholder="60">
+        <label>Previous Crop:</label>
+        <input type="text" id="previousCrop" placeholder="Wheat">
+        <label>Area (hectares):</label>
+        <input type="number" step="0.1" id="area" placeholder="2.5">
+        <button class="btn">Get Recommendation</button>
+      </form>
+      <div id="results"></div>
+    </div>
+
+
+    <h2>Dashboard</h2>
+    <div class="dashboard-cards">
+      <div class="card">
+        <h3>🌾 Recommended Crop</h3>
+        <p id="dashCrop">Rice</p>
+      </div>
+      <div class="card">
+        <h3>🌡️ Soil Health</h3>
+        <p>pH: 6.8 | Moisture: 60%</p>
+      </div>
+      <div class="card">
+        <h3>📊 Area Coverage</h3>
+        <p>2.5 hectares</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Smart Farming. All Rights Reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Smart Farming</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Smart Farming</h1>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/login.html">Login</a>
+      <a href="/register.html">Register</a>
+      <a href="/dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h2 class="fade-slide">Welcome to AI-Based Crop Recommendation</h2>
+
+    <div class="info-card fade-slide">
+      <h3>🌱 About Smart Farming</h3>
+      <p>Smart Farming uses <strong>AI, IoT, and Data Science</strong> to improve agricultural productivity and suggest the best crops for your farm. Monitor soil, water, and crop health efficiently.</p>
+    </div>
+
+    <div class="info-card fade-slide" style="animation-delay: 0.2s;">
+      <h3>🤖 AI-Based Crop Recommendation</h3>
+      <p>Our AI analyzes soil pH, moisture, previous crops, and farm area to suggest optimal crops that maximize yield and reduce resource wastage.</p>
+    </div>
+
+    <div class="info-card fade-slide" style="animation-delay: 0.4s;">
+      <h3>🌾 Benefits</h3>
+      <ul>
+        <li>Increase productivity</li>
+        <li>Reduce crop failure</li>
+        <li>Optimize resource usage</li>
+        <li>Data-driven decisions</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- Chatbot -->
+  <div class="chatbot" id="chatBot">
+    <div class="chat-header">🤖 SmartBot <span id="closeChat">✖</span></div>
+    <div class="chat-body" id="chatBody">
+      <div class="bot-msg">Hello! 👋 I’m your farming assistant. Ask me anything!</div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Type a message...">
+      <button id="sendBtn">➤</button>
+      <button id="voiceBtn">🎤</button>
+    </div>
+  </div>
+
+  <button class="chat-toggle" id="chatToggle">💬</button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Smart Farming. All Rights Reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+
+  <style>
+    /* Animations for home page */
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s forwards;
+    }
+    .fade-slide:nth-child(2) { animation-delay: 0.1s; }
+    .fade-slide:nth-child(3) { animation-delay: 0.3s; }
+    .fade-slide:nth-child(4) { animation-delay: 0.5s; }
+
+    @keyframes fadeSlideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Updated hover effect on info cards */
+    .info-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+  </style>
+
+</body>
+</html>
