@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Smart Farming</title>
+  <title>Home - HaritPath</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
-    <h1>Smart Farming</h1>
-    <nav>
-      <a href="/index.html">Home</a>
-      <a href="/login.html">Login</a>
-      <a href="/register.html">Register</a>
-      <a href="/dashboard.html">Dashboard</a>
-    </nav>
-  </header>
+  <div class="logo-container">
+    <img src="/farmer.png" alt="HaritPath Logo" class="logo">
+    <h1>HaritPath</h1>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
 
   <!-- Main Content -->
   <main>
@@ -44,52 +48,87 @@
       </ul>
     </div>
   </main>
+  <center><h1>Our Services</h1></center>
+  <img src="/service.png" alt="">
 
-  <!-- Chatbot -->
-  <div class="chatbot" id="chatBot">
-    <div class="chat-header">🤖 SmartBot <span id="closeChat">✖</span></div>
-    <div class="chat-body" id="chatBody">
-      <div class="bot-msg">Hello! 👋 I’m your farming assistant. Ask me anything!</div>
+  <section class="services">
+  <h2 class="services-title">Our Services</h2>
+  <div class="service-cards">
+    <div class="service-card">
+      <img src="/headset.png" alt="Customer Support">
+      <h3>24*7 Customer Support</h3>
+      <p>We’re just one call away.</p>
     </div>
-    <div class="chat-footer">
-      <input type="text" id="chatInput" placeholder="Type a message...">
-      <button id="sendBtn">➤</button>
-      <button id="voiceBtn">🎤</button>
+    <div class="service-card">
+      <img src="/handshake.png" alt="Partnership">
+      <h3>Trusted Partnerships</h3>
+      <p>We’re just one call away.</p>
+    </div>
+    <div class="service-card">
+      <img src="/check.png" alt="Verified Quality">
+      <h3>Verified Quality</h3>
+      <p>We’re just one call away.</p>
     </div>
   </div>
+</section>
 
-  <button class="chat-toggle" id="chatToggle">💬</button>
+ <!-- Chatbot -->
+<div class="chatbot" id="chatBot">
+  <div class="chat-header">🤖 FarmerBot <span id="closeChat">✖</span></div>
+  <div class="chat-body" id="chatBody">
+    <div class="bot-msg">Hello! 👋 I’m your farming assistant. Ask me anything!</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="Type a message...">
+    <button id="sendBtn">➤</button>
+    <button id="voiceBtn">🎤</button>
+  </div>
+</div>
+
+<!-- Chatbot toggle button (farmer icon) -->
+<button class="chat-toggle" id="chatToggle">
+  <img src="/farmer.png" alt="Farmer Chat" style="width: 40px; height: 40px;">
+</button>
 
   <!-- Footer -->
-  <footer class="footer">
-    &copy; 2025 Smart Farming. All Rights Reserved.
-  </footer>
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Brand Info -->
+    <div class="footer-section brand">
+      <img src="/farmer.png" alt="HaritPath Logo" class="footer-logo">
+      <h3>HaritPath (Harit = Green, Path = Way)</h3>
+      <p>"Green Wisdom for Modern Farming".</p>
+    </div>
 
-  <!-- Scripts -->
+    <!-- Navigation Links -->
+    <div class="footer-section links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>Made by: <strong>HaritPath</strong></p>
+    </div>
+
+    
+  </div>
+  <p class="footer-bottom">© 2025 HaritPath. All rights reserved.</p>
+</footer>
+
   <script src="script.js"></script>
-
-  <style>
-    /* Animations for home page */
-    .fade-slide {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeSlideIn 0.8s forwards;
-    }
-    .fade-slide:nth-child(2) { animation-delay: 0.1s; }
-    .fade-slide:nth-child(3) { animation-delay: 0.3s; }
-    .fade-slide:nth-child(4) { animation-delay: 0.5s; }
-
-    @keyframes fadeSlideIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Updated hover effect on info cards */
-    .info-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-      transition: all 0.3s ease;
-    }
-  </style>
 
 </body>
 </html>
