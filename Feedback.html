@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* 🌟 Global Styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #81ecec, #74b9ff);
+  }
+
+  /* 🌟 Form Container */
+  .feedback-container {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 🌟 Animated Background Circles */
+  .feedback-container::before, .feedback-container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+  }
+  .feedback-container::before {
+    width: 150px;
+    height: 150px;
+    background: #ffeaa7;
+    top: -50px;
+    left: -50px;
+  }
+  .feedback-container::after {
+    width: 100px;
+    height: 100px;
+    background: #fab1a0;
+    bottom: -30px;
+    right: -30px;
+    animation-delay: 3s;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(45deg); }
+  }
+
+  /* 🌟 Form Heading */
+  .feedback-container h2 {
+    text-align: center;
+    color: #2d3436;
+    margin-bottom: 30px;
+  }
+
+  /* 🌟 Form Fields */
+  .feedback-container input, 
+  .feedback-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #dfe6e9;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+  }
+  .feedback-container input:focus,
+  .feedback-container textarea:focus {
+    border-color: #0984e3;
+    box-shadow: 0 0 8px rgba(0, 149, 255, 0.3);
+  }
+
+  /* 🌟 Animated Submit Button */
+  .feedback-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+  }
+  .feedback-container button::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255,255,255,0.3);
+    transition: 0.4s;
+  }
+  .feedback-container button:hover::before {
+    width: 100%;
+  }
+  .feedback-container button:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<div class="feedback-container">
+  <h2>Give Your Feedback</h2>
+  <form id="feedbackForm">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="4" placeholder="Your Feedback" required></textarea>
+    <button type="submit">Send Feedback</button>
+  </form>
+</div>
+
+<script>
+  // Simple submit animation
+  const form = document.getElementById('feedbackForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Thank you for your feedback!");
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
