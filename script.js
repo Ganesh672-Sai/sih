@@ -88,3 +88,56 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const chatToggle = document.getElementById("chatToggle");
+  const chatBot = document.getElementById("chatBot");
+  const closeChat = document.getElementById("closeChat");
+  const sendBtn = document.getElementById("sendBtn");
+  const chatBody = document.getElementById("chatBody");
+  const chatInput = document.getElementById("chatInput");
+  const voiceBtn = document.getElementById("voiceBtn");
+
+  // Open chatbot
+  chatToggle.addEventListener("click", () => {
+    chatBot.style.display = "flex";
+    chatToggle.style.display = "none";
+  });
+
+  // Close chatbot
+  closeChat.addEventListener("click", () => {
+    chatBot.style.display = "none";
+    chatToggle.style.display = "flex";
+  });
+
+  // Add messages
+  function addMessage(text, sender) {
+    const msg = document.createElement("div");
+    msg.className = sender === "user" ? "user-msg" : "bot-msg";
+    msg.innerText = text;
+    chatBody.appendChild(msg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function botReply(message){
+    const msg = message.toLowerCase();
+    if(msg.includes("hello") || msg.includes("hi")) return "Hello! How can I assist with your farm today?";
+    if(msg.includes("crop") || msg.includes("recommendation")) return "Use the crop recommendation form on your dashboard to get the best crops for your farm.";
+    if(msg.includes("rice")) return "Rice grows best in pH 6-7 and moisture >=50%.";
+    if(msg.includes("maize")) return "Maize grows best in pH < 6 and moderate moisture.";
+    return "I am here to help you with farming queries 🌾.";
+  }
+
+  sendBtn.addEventListener("click", () => {
+    const userMsg = chatInput.value.trim();
+    if(!userMsg) return;
+    addMessage(userMsg, "user");
+    chatInput.value = "";
+    const reply = botReply(userMsg);
+    addMessage(reply, "bot");
+  });
+
+  chatInput.addEventListener("keypress", (e) => {
+    if(e.key === "Enter") sendBtn.click();
+  });
+});
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
