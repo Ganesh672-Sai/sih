@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ----------------- Crop Recommendation Logic -----------------
-  function getCropRecommendations(ph, moisture, previousCrop) {
+  function getCropRecommendations(ph, moisture, previousCrop = "") {
     let recommendations = [];
 
     if (ph >= 6 && ph <= 7 && moisture >= 50) {
@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
       recommendations.push("Sugarcane", "Cotton", "Sunflower");
     }
 
-    // Remove previous crop if present
     if (previousCrop) {
       recommendations = recommendations.filter(crop => crop.toLowerCase() !== previousCrop.toLowerCase());
     }
@@ -58,6 +57,35 @@ document.addEventListener("DOMContentLoaded", () => {
     return recommendations;
   }
 
+  // ----------------- Recommendation Form -----------------
+  const cropForm = document.getElementById("cropForm");
+  if (cropForm) {
+    cropForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const ph = parseFloat(document.getElementById("ph").value);
+      const moisture = parseFloat(document.getElementById("moisture").value);
+      const previousCrop = document.getElementById("previousCrop").value;
+      const area = parseFloat(document.getElementById("area").value);
+
+      const recs = getCropRecommendations(ph, moisture, previousCrop);
+
+      // Show results
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = `
+        <h4>✅ Recommended Crops:</h4>
+        <ul>${recs.map(crop => `<li>${crop}</li>`).join("")}</ul>
+      `;
+
+      // Update Dashboard cards
+      document.getElementById("dashCrop").textContent = recs[0];
+      document.querySelector(".dashboard-cards .card:nth-child(2) p").textContent =
+        `pH: ${ph} | Moisture: ${moisture}%`;
+      document.querySelector(".dashboard-cards .card:nth-child(3) p").textContent =
+        `${area} hectares`;
+    });
+  }
+
   // ----------------- Bot Reply -----------------
   function botReply(message) {
     const msg = message.toLowerCase();
@@ -67,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Hello! 👋 How can I assist with your farm today?";
     }
 
-    // If user asks about crop recommendation with numbers
+    // Crop recommendation from user input
     const phMatch = msg.match(/ph\s*([0-9.]+)/);
     const moistureMatch = msg.match(/moisture\s*([0-9.]+)/);
 
@@ -75,11 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const ph = parseFloat(phMatch[1]);
       const moisture = parseFloat(moistureMatch[1]);
 
-      const recs = getCropRecommendations(ph, moisture, "");
+      const recs = getCropRecommendations(ph, moisture);
       return `Based on pH ${ph} and moisture ${moisture}%, I recommend: ${recs.join(", ")} 🌾`;
     }
 
-    // Keyword crop info
+    // Individual crop info
     if (msg.includes("rice")) return "Rice grows best in pH 6-7 and moisture ≥50%.";
     if (msg.includes("maize")) return "Maize grows best in pH < 6 and moderate moisture.";
     if (msg.includes("wheat")) return "Wheat thrives in pH 6-7 and 40–60% moisture.";
@@ -87,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return "I can help recommend crops! 🌱 Try asking like: 'Suggest crops for pH 6.5 and moisture 55%'.";
   }
 
-  // ----------------- Send Button -----------------
+  // ----------------- Chat Send -----------------
   if (sendBtn) {
     sendBtn.addEventListener("click", () => {
       const userMsg = chatInput.value.trim();
@@ -101,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Press Enter to send
   if (chatInput) {
     chatInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") sendBtn.click();
